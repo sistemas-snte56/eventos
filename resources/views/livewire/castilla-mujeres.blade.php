@@ -149,7 +149,7 @@
                         <div class="col-lg-6  mb-4 pb-2">
                             <div class="form-group">
                                 <label for="npersonal" class="form-label">Número de personal</label>
-                                <input type="text" id="npersonal" name="npersonal" wire:model.blur="npersonal"
+                                <input type="tel" id="npersonal" name="npersonal" wire:model.blur="npersonal"
                                     class="form-control" placeholder="Ingresa tu número de personal" autocomplete="off">
                                 @error('npersonal')
                                     <span style="color: red;">{{ $message }}</span>
@@ -338,7 +338,7 @@
                             <div class="col-lg-4 mb-4 pb-2">
                                 <div class="form-group">
                                     <label for="cp" class="form-label">Código postal</label>
-                                    <input type="text" id="cp" name="cp" wire:model.blur="cp"
+                                    <input type="tel" id="cp" name="cp" wire:model.blur="cp"
                                         class="form-control" placeholder="Ingresa código postal" autocomplete="off">
                                     @error('cp')
                                         <span style="color: red;">{{ $message }}</span>
@@ -519,7 +519,7 @@
                         <div class="col-lg-4 mb-4 pb-2">
                             <div class="form-group">
                                 <label for="cp" class="form-label">Código postal</label>
-                                <input type="text" id="cp" name="cp" wire:model.blur="cp"
+                                <input type="tel" id="cp" name="cp" wire:model.blur="cp"
                                     class="form-control" placeholder="Ingresa código postal" autocomplete="off">
                                 @error('cp')
                                     <span style="color: red;">{{ $message }}</span>

@@ -60,11 +60,11 @@
                         <li class="nav-item "><a class="nav-link " href="{{route('search-participante')}}" wire:navigate>Buscar</a></li>
                     </ul>
                     @auth
-                        <a href="{{ route('home') }}" wire:navigate class="btn btn-outline-primary">Dashboard</a>
+                        <a href="{{ route('filament.admin.pages.dashboard') }}"  class="btn btn-outline-primary">Dashboard</a>
                     @endauth
 
                     @guest
-                        <a href="{{ route('filament.admin.auth.login') }}" wire:navigate class="btn btn-outline-primary">Login</a>
+                        <a href="{{ route('filament.admin.auth.login') }}"  class="btn btn-outline-primary">Login</a>
                     @endguest                			
                 </div>
             </div>
