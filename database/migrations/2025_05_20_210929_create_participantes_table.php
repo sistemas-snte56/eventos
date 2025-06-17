@@ -40,6 +40,12 @@ return new class extends Migration
                 'Jubilados'
             ])->nullable();
             $table->string('curp')->nullable();
+
+            
+            $table->string('codigo_postal')->nullable();
+            $table->foreignId('colonia_id')->constrained('colonias')->onDelete('cascade');
+            $table->string('calle')->nullable();
+
             $table->string('folio', 250)->nullable();
             $table->string('slug')->unique();
             $table->string('codigo_id', 250)->nullable();

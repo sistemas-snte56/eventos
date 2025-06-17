@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col-lg-9 col-md-8 mb-4">
                                     <input type="text" class="form-control"
-                                           placeholder="Buscar por número personal o folio"
+                                           placeholder="Buscar por correo electrónico, número personal o folio"
                                            wire:model.defer="query">
                                 </div>
                                 <div class="col-lg-3 col-md-4 mb-4">
@@ -29,7 +29,7 @@
                                         Buscar
                                     </button>
                                 </div>
-                            </div>
+                            </div>  
                         </form>
 
 

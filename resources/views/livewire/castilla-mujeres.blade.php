@@ -184,8 +184,6 @@
                         </div>
 
 
-
-                        {{-- Mas Opciones --}}
                         {{-- Datos personales --}}
                         <div class="row">
                             <p style="color: #ee7a00; font-size: 18px; font-weight: bold; margin-top: 4px;" class="pt-4">Datos Personales</p>
@@ -236,23 +234,8 @@
 
                             </div>
             
-                            {{-- Género --}}
-                            <div class="col-lg-3  mb-4 pb-2">
-                                <div class="form-group ">
-                                    <label for="genero" class="form-label">Género</label>
-                                    <select id="genero" name="genero" wire:model="genero" class="form-control">
-                                        <option value="">Selecciona género</option>
-                                        <option value="Hombre">Hombre</option>
-                                        <option value="Mujer">Mujer</option>
-                                    </select>
-                                    @error('genero')
-                                        <span style="color: red;">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-            
                             {{-- Email --}}
-                            <div class="col-lg-3  mb-4 pb-2">
+                            <div class="col-lg-5  mb-4 pb-2">
                                 <div class="form-group ">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" id="email" name="email" wire:model.blur="email"
@@ -264,7 +247,7 @@
                             </div>
             
                             {{-- Teléfono --}}
-                            <div class="col-lg-3  mb-4 pb-2">
+                            <div class="col-lg-4  mb-4 pb-2">
                                 <div class="form-group ">
                                     <label for="telefono" class="form-label">Número telefónico</label>
                                     <input type="tel" id="telefono" name="telefono" wire:model.blur="telefono"
@@ -280,91 +263,80 @@
                         <div class="row">
                             <p style="color: #ee7a00; font-size: 18px; font-weight: bold; margin-top: 4px;" class="pt-4">Domicilio actual</p>
 
-                            {{-- Select de municipio --}}
-                            <div class="col-lg-6 mb-4 pb-2">
+
+
+
+
+
+
+                            {{-- Código postal --}}
+                            <div class="col-lg-4 mb-4 pb-2">
                                 <div class="form-group">
-                                    <label for="selectedMunicipio" class="form-label">Municipio</label>
-                                    <select id="selectedMunicipio" name="selectedMunicipio" wire:model.live="selectedMunicipio"
-                                        class="form-control">
-                                        <option value="">Selecciona tu municipio</option>
-                                        @foreach ($municipios as $municipio)
-                                            <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-            
-                            {{-- Select de localidad --}}
-                            <div class="col-lg-6 mb-4 pb-2">
-                                <div class="form-group">
-                                    <label for="localidad_id" class="form-label">Localidad</label>
-                                    <select id="localidad_id" name="localidad_id" wire:model="localidad_id"
-                                        class="form-control">
-                                        <option value="">Selecciona una localidad</option>
-                                        @foreach ($localidades as $localidad)
-                                            <option value="{{ $localidad->id }}">
-                                                {{ $localidad->nombre }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @error('localidad_id')
+                                    <label for="codigo_postal" class="form-label">Código postal</label>
+                                    <input type="tel" id="codigo_postal" name="codigo_postal" wire:model.lazy="codigo_postal"
+                                        class="form-control" placeholder="Ingresa tú ccodigo postal" autocomplete="off">
+                                    @error('codigo_postal')
                                         <span style="color: red;">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div>                            
                             </div>
 
+                            {{-- Colonia --}}
                             <div class="col-lg-4 mb-4 pb-2">
+                                <div class="form-group">
+                                    <label for="colonia_id" class="form-label">Colonia</label>
+                                    <select wire:model="colonia_id" class="form-control">
+                                        <option value="">-- Selecciona una colonia --</option>
+                                        @foreach ($colonias as $colonia)
+                                            <option value="{{ $colonia->id }}">{{ $colonia->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('colonia_id')
+                                        <span style="color: red;">{{ $message }}</span>
+                                    @enderror
+                                </div>                            
+                            </div>
+
+                            {{-- Municipio --}}
+                            <div class="col-lg-4 mb-4 pb-2">
+                                <div class="form-group">
+                                    <label for="municipio_nombre" class="form-label">Municipio</label>
+                                    <input type="text" id="municipio_nombre" name="municipio_nombre" wire:model="municipio_nombre"
+                                        class="form-control" placeholder="-- Selecciona un municipio --" autocomplete="off">                                
+                                    @error('municipio_nombre')
+                                        <span style="color: red;">{{ $message }}</span>
+                                    @enderror
+                                </div>                            
+                            </div>
+                        
+                            {{-- Calle --}}
+                            <div class="col-lg-12 mb-4 pb-2">
                                 <div class="form-group">
                                     <label for="calle" class="form-label">Calle</label>
                                     <input type="text" id="calle" name="calle" wire:model.blur="calle"
-                                        class="form-control" placeholder="Ingresa la calle" autocomplete="off">
+                                        class="form-control" placeholder="Ingresa la calle">
                                     @error('calle')
                                         <span style="color: red;">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div>
-                            
-                            <div class="col-lg-4 mb-4 pb-2">
-                                <div class="form-group">
-                                    <label for="colonia" class="form-label">Colonia</label>
-                                    <input type="text" id="colonia" name="colonia" wire:model.blur="colonia"
-                                        class="form-control" placeholder="Ingresa la colonia" autocomplete="off">
-                                    @error('colonia')
-                                        <span style="color: red;">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            
-                            <div class="col-lg-4 mb-4 pb-2">
-                                <div class="form-group">
-                                    <label for="cp" class="form-label">Código postal</label>
-                                    <input type="tel" id="cp" name="cp" wire:model.blur="cp"
-                                        class="form-control" placeholder="Ingresa código postal" autocomplete="off">
-                                    @error('cp')
-                                        <span style="color: red;">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            
+                            </div>                            
+                   
 
                             {{-- Botón --}}
                             <div class="col-lg-12 mb-4 pb-2">
                                 <button type="submit" class="btn btn-primary w-100">Registrar</button>
-                            </div>                    
+                            </div> 
+
+
                         </div>                        
-
-
-
-
-
 
                     </div>
 
                 @elseif ($opcion === 'no')
+
                     <div style="background-color: #fff4e5; color: rgba(0, 0, 0, 0.8); padding: 1rem; border-radius: 5px; border: 1px solid #ee7a00;">
                         <strong style="color: #f5942c;">Gracias:</strong> Por favor llena los datos solicitados.
                     </div>       
-                    
                 
                     {{-- Datos Personales --}}
                     <div class="row">
@@ -416,23 +388,8 @@
 
                         </div>
         
-                        {{-- Género --}}
-                        <div class="col-lg-3  mb-4 pb-2">
-                            <div class="form-group ">
-                                <label for="genero" class="form-label">Género</label>
-                                <select id="genero" name="genero" wire:model="genero" class="form-control">
-                                    <option value="">Selecciona género</option>
-                                    <option value="Hombre">Hombre</option>
-                                    <option value="Mujer">Mujer</option>
-                                </select>
-                                @error('genero')
-                                    <span style="color: red;">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-        
                         {{-- Email --}}
-                        <div class="col-lg-3  mb-4 pb-2">
+                        <div class="col-lg-5  mb-4 pb-2">
                             <div class="form-group ">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" id="email" name="email" wire:model.blur="email"
@@ -444,7 +401,7 @@
                         </div>
         
                         {{-- Teléfono --}}
-                        <div class="col-lg-3  mb-4 pb-2">
+                        <div class="col-lg-4  mb-4 pb-2">
                             <div class="form-group ">
                                 <label for="telefono" class="form-label">Número telefónico</label>
                                 <input type="tel" id="telefono" name="telefono" wire:model.blur="telefono"
@@ -455,73 +412,58 @@
                             </div>    
                         </div>
                     </div>
-                    
 
                     {{-- Domicilio actual --}}
                     <div class="row">
                         <p style="color: #ee7a00; font-size: 18px; font-weight: bold; margin-top: 4px;" class="pt-4">Domicilio actual</p>
 
-                        {{-- Select de municipio --}}
-                        <div class="col-lg-6 mb-4 pb-2">
+                        {{-- Código postal --}}
+                        <div class="col-lg-4 mb-4 pb-2">
                             <div class="form-group">
-                                <label for="selectedMunicipio" class="form-label">Municipio</label>
-                                <select id="selectedMunicipio" name="selectedMunicipio" wire:model.live="selectedMunicipio"
-                                    class="form-control">
-                                    <option value="">Selecciona tu municipio</option>
-                                    @foreach ($municipios as $municipio)
-                                        <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-        
-                        {{-- Select de localidad --}}
-                        <div class="col-lg-6 mb-4 pb-2">
-                            <div class="form-group">
-                                <label for="localidad_id" class="form-label">Localidad</label>
-                                <select id="localidad_id" name="localidad_id" wire:model="localidad_id"
-                                    class="form-control">
-                                    <option value="">Selecciona una localidad</option>
-                                    @foreach ($localidades as $localidad)
-                                        <option value="{{ $localidad->id }}">
-                                            {{ $localidad->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('localidad_id')
+                                <label for="codigo_postal" class="form-label">Código postal</label>
+                                <input type="tel" id="codigo_postal" name="codigo_postal" wire:model.lazy="codigo_postal"
+                                    class="form-control" placeholder="Ingresa tú ccodigo postal" autocomplete="off">
+                                @error('codigo_postal')
                                     <span style="color: red;">{{ $message }}</span>
                                 @enderror
-                            </div>
+                            </div>                            
                         </div>
 
+                        {{-- Colonia --}}
                         <div class="col-lg-4 mb-4 pb-2">
+                            <div class="form-group">
+                                <label for="colonia_id" class="form-label">Colonia</label>
+                                <select wire:model="colonia_id" class="form-control">
+                                    <option value="">-- Selecciona una colonia --</option>
+                                    @foreach ($colonias as $colonia)
+                                        <option value="{{ $colonia->id }}">{{ $colonia->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                @error('colonia_id')
+                                    <span style="color: red;">{{ $message }}</span>
+                                @enderror
+                            </div>                            
+                        </div>
+
+                        {{-- Municipio --}}
+                        <div class="col-lg-4 mb-4 pb-2">
+                            <div class="form-group">
+                                <label for="municipio_nombre" class="form-label">Municipio</label>
+                                <input type="text" id="municipio_nombre" name="municipio_nombre" wire:model="municipio_nombre"
+                                    class="form-control" placeholder="-- Selecciona un municipio --" autocomplete="off">                                
+                                @error('municipio_nombre')
+                                    <span style="color: red;">{{ $message }}</span>
+                                @enderror
+                            </div>                            
+                        </div>
+                    
+     
+                        <div class="col-lg-12 mb-4 pb-2">
                             <div class="form-group">
                                 <label for="calle" class="form-label">Calle</label>
                                 <input type="text" id="calle" name="calle" wire:model.blur="calle"
                                     class="form-control" placeholder="Ingresa la calle" autocomplete="off">
                                 @error('calle')
-                                    <span style="color: red;">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 mb-4 pb-2">
-                            <div class="form-group">
-                                <label for="colonia" class="form-label">Colonia</label>
-                                <input type="text" id="colonia" name="colonia" wire:model.blur="colonia"
-                                    class="form-control" placeholder="Ingresa la colonia" autocomplete="off">
-                                @error('colonia')
-                                    <span style="color: red;">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 mb-4 pb-2">
-                            <div class="form-group">
-                                <label for="cp" class="form-label">Código postal</label>
-                                <input type="tel" id="cp" name="cp" wire:model.blur="cp"
-                                    class="form-control" placeholder="Ingresa código postal" autocomplete="off">
-                                @error('cp')
                                     <span style="color: red;">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -534,10 +476,7 @@
                         </div>                    
                     </div>  
 
-
-
-                @endif                    
-
+                @endif    
                 
 
 

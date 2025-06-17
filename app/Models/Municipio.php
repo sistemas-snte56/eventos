@@ -17,5 +17,11 @@ class Municipio extends Model
     public function localidades()
     {
         return $this->hasMany(Localidad::class);
+    }
+
+    // Relación: un Municipio tiene muchas Colonias
+    public function colonias()
+    {
+        return $this->hasMany(Colonia::class);
     }    
 }

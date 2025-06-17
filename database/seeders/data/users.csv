@@ -1,0 +1,2 @@
+id,name,email,email_verified_at,password,remember_token,created_at,updated_at
+1,fnouit,fnouit@email.com,NULL,$2y$12$zrn6OI1eaNI4XGNj2CeyP.iGf0KFrXnRGjIlcymw2nPCYqYR37kh2,NULL,"2025-05-20 19:43:19","2025-05-20 19:43:19"

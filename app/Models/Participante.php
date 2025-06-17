@@ -13,7 +13,7 @@ class Participante extends Model
         'delegacion_id', 'rfc', 'nombre', 'apaterno', 'amaterno',
         'genero', 'email', 'npersonal', 'telefono', 'ct',
         'cargo', 'nivel', 'curp', 'folio', 'slug',
-        'codigo_id', 'codigo_qr', 'talon', 'ine_frontal', 'ine_reverso','localidad_id',
+        'codigo_id', 'codigo_qr', 'talon', 'ine_frontal', 'ine_reverso','colonia_id',
         'calle','colonia','cp',
     ];
 
@@ -27,9 +27,9 @@ class Participante extends Model
         return $this->belongsToMany(Tema::class)->withTimestamps();
     }
         
-    // Relación: un participante pertenece a una localidad
-    public function localidad()
+    // Relación: un participante pertenece a una colonia
+    public function colonia()
     {
-        return $this->belongsTo(Localidad::class);
+        return $this->belongsTo(Colonia::class);
     }    
 }
